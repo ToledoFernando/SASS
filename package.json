@@ -1,0 +1,24 @@
+{
+  "name": "sass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass index.scss index.css",
+    "dev": "nodemon -e scss -x \"sass index.scss:index.css\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToledoFernando/SASS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ToledoFernando/SASS/issues"
+  },
+  "homepage": "https://github.com/ToledoFernando/SASS#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
