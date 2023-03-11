@@ -1,3 +1,120 @@
-body {
-  background-color: red;
+@mixin animNube($delay: 0s, $velocidad: 7s) {
+  animation: nube $velocidad linear $delay infinite;
+}
+@mixin nubeSkin(
+  $width: 100px,
+  $height: 100px,
+  $top: null,
+  $right: null,
+  $botton: null,
+  $left: null
+) {
+  background-color: #fff;
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+  @if feature-exists($top) {
+    top: $top;
+  }
+  @if feature-exists($right) {
+    right: $right;
+  }
+  @if feature-exists($botton) {
+    bottom: $botton;
+  }
+  @if feature-exists($left) {
+    left: $left;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow: hidden;
+}
+.fondo {
+  background-color: #22e2ff;
+  height: 110vh;
+  width: 100%;
+
+  .cielo {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+
+    .nube {
+      background-color: #fff;
+      position: relative;
+      width: 130px;
+      height: 50px;
+      // transform: translateX(10vh);
+      transform: translateX(250vh);
+
+      &:nth-child(1) {
+        margin-top: 30px;
+        position: relative;
+
+        span {
+          position: absolute;
+
+          &:nth-child(1) {
+            background-color: #fff;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            top: -40%;
+            right: -10%;
+          }
+
+          &:nth-child(2) {
+            background-color: #fff;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            top: -40%;
+            left: -10%;
+          }
+          &:nth-child(3) {
+            background-color: #fff;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            top: -70%;
+            right: 10%;
+          }
+        }
+        @include animNube(1s, 13s);
+      }
+      &:nth-child(2) {
+        margin-top: 230px;
+        @include animNube(4s, 15s);
+      }
+      &:nth-child(3) {
+        @include animNube(2s, 17s);
+
+        margin-top: 90px;
+      }
+      &:nth-child(4) {
+        @include animNube(4s, 10s);
+        margin-top: 370px;
+      }
+      &:nth-child(5) {
+        @include animNube(7s, 9s);
+
+        margin-top: 250px;
+      }
+
+      @keyframes nube {
+        0% {
+          transform: translateX(250vh);
+        }
+        100% {
+          transform: translateX(-250vh);
+        }
+      }
+    }
+  }
 }
