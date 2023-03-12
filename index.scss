@@ -1,3 +1,5 @@
+@import "pato";
+
 @mixin animNube($delay: 0s, $velocidad: 7s) {
   animation: nube $velocidad linear $delay infinite;
 }
@@ -13,16 +15,16 @@
   width: $width;
   height: $height;
   border-radius: 50%;
-  @if feature-exists($top) {
+  @if $top != null and $top != "" {
     top: $top;
   }
-  @if feature-exists($right) {
+  @if $right != null and $right != "" {
     right: $right;
   }
-  @if feature-exists($botton) {
+  @if $botton != null and $botton != "" {
     bottom: $botton;
   }
-  @if feature-exists($left) {
+  @if $left != null and $botton != "" {
     left: $left;
   }
 }
@@ -39,6 +41,9 @@ html {
   background-color: #22e2ff;
   height: 110vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
   .cielo {
     display: flex;
@@ -50,7 +55,6 @@ html {
       position: relative;
       width: 130px;
       height: 50px;
-      // transform: translateX(10vh);
       transform: translateX(250vh);
 
       &:nth-child(1) {
@@ -59,62 +63,119 @@ html {
 
         span {
           position: absolute;
+          background-color: #fff;
 
           &:nth-child(1) {
-            background-color: #fff;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            top: -40%;
-            right: -10%;
+            @include nubeSkin(80px, 80px, -40%, -10%);
           }
 
           &:nth-child(2) {
-            background-color: #fff;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            top: -40%;
-            left: -10%;
+            @include nubeSkin(80px, 80px, -40%, null, null, -10%);
           }
           &:nth-child(3) {
-            background-color: #fff;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            top: -70%;
-            right: 10%;
+            @include nubeSkin(100px, 100px, -70%, 10%);
           }
         }
-        @include animNube(1s, 13s);
+        @include animNube(1s, 10s);
       }
       &:nth-child(2) {
         margin-top: 230px;
+        position: relative;
+
+        span {
+          position: absolute;
+          background-color: #fff;
+
+          &:nth-child(1) {
+            @include nubeSkin(80px, 80px, -40%, -10%);
+          }
+
+          &:nth-child(2) {
+            @include nubeSkin(80px, 80px, -40%, null, null, -10%);
+          }
+          &:nth-child(3) {
+            @include nubeSkin(100px, 100px, -70%, 10%);
+          }
+        }
         @include animNube(4s, 15s);
       }
       &:nth-child(3) {
+        position: relative;
         @include animNube(2s, 17s);
-
         margin-top: 90px;
+
+        span {
+          position: absolute;
+          background-color: #fff;
+
+          &:nth-child(1) {
+            @include nubeSkin(80px, 80px, -40%, -10%);
+          }
+
+          &:nth-child(2) {
+            @include nubeSkin(80px, 80px, -40%, null, null, -10%);
+          }
+          &:nth-child(3) {
+            @include nubeSkin(100px, 100px, -70%, 10%);
+          }
+        }
       }
       &:nth-child(4) {
         @include animNube(4s, 10s);
         margin-top: 370px;
+        position: relative;
+        span {
+          position: absolute;
+          background-color: #fff;
+
+          &:nth-child(1) {
+            @include nubeSkin(80px, 80px, -40%, -10%);
+          }
+
+          &:nth-child(2) {
+            @include nubeSkin(80px, 80px, -40%, null, null, -10%);
+          }
+          &:nth-child(3) {
+            @include nubeSkin(100px, 100px, -70%, 10%);
+          }
+        }
       }
       &:nth-child(5) {
         @include animNube(7s, 9s);
+        position: relative;
+        span {
+          position: absolute;
+          background-color: #fff;
+
+          &:nth-child(1) {
+            @include nubeSkin(80px, 80px, -40%, -10%);
+          }
+
+          &:nth-child(2) {
+            @include nubeSkin(80px, 80px, -40%, null, null, -10%);
+          }
+          &:nth-child(3) {
+            @include nubeSkin(100px, 100px, -70%, 10%);
+          }
+        }
 
         margin-top: 250px;
       }
 
       @keyframes nube {
         0% {
-          transform: translateX(250vh);
+          transform: translateX(200vh);
         }
         100% {
-          transform: translateX(-250vh);
+          transform: translateX(-200vh);
         }
       }
     }
+  }
+  .pasto {
+    background: linear-gradient(to top left, #0b790b, #4ad14a);
+    width: 100%;
+    height: 30vh;
+    position: relative;
   }
 }
